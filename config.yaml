@@ -1,0 +1,6 @@
+window_seconds: 30
+alert_zscore_threshold: 2.0
+min_requests_for_alert: 10
+min_score: 20
+dry_run: true
+

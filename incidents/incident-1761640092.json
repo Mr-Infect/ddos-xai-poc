@@ -1,0 +1,91 @@
+{
+  "id": "incident-1761640092",
+  "time": "2025-10-28T08:28:12.630091+00:00",
+  "score": 13.963015965151227,
+  "z": {
+    "requests": 1.0000000000191287,
+    "unique_ips": 2.3273450770878807,
+    "top_path_count": 1.0000000000191287,
+    "ua_entropy": 0.980980733772811
+  },
+  "features": {
+    "requests": 266,
+    "unique_ips": 77,
+    "top_path_count": 266,
+    "ua_entropy": 8.04776363850876
+  },
+  "top_offenders": [
+    [
+      "10.0.0.9",
+      8
+    ],
+    [
+      "10.0.0.2",
+      8
+    ],
+    [
+      "10.0.0.76",
+      7
+    ],
+    [
+      "10.0.0.67",
+      7
+    ],
+    [
+      "10.0.0.69",
+      7
+    ],
+    [
+      "10.0.0.32",
+      7
+    ],
+    [
+      "10.0.0.51",
+      7
+    ],
+    [
+      "10.0.0.74",
+      6
+    ],
+    [
+      "10.0.0.1",
+      6
+    ],
+    [
+      "10.0.0.68",
+      6
+    ]
+  ],
+  "explanation": "unique_ips contributed ~44% to anomaly score; requests contributed ~19% to anomaly score; top_path_count contributed ~19% to anomaly score",
+  "confidence": "LOW",
+  "recommended_mitigations": [
+    {
+      "id": "rate_limit_path",
+      "label": "Rate-limit path /login (10r/s)",
+      "impact": "low",
+      "confidence": "LOW",
+      "cmd_preview": "Add nginx limit_req for location /login"
+    },
+    {
+      "id": "block_top_ips",
+      "label": "Temporarily DROP top offenders: 10.0.0.9, 10.0.0.2, 10.0.0.76",
+      "impact": "medium",
+      "confidence": "LOW",
+      "cmd_preview": "iptables -I INPUT -s 10.0.0.9, 10.0.0.2, 10.0.0.76 -j DROP"
+    },
+    {
+      "id": "enable_waf_challenge",
+      "label": "Enable WAF challenge (captcha/block) for suspect path",
+      "impact": "high",
+      "confidence": "LOW",
+      "cmd_preview": "Cloudflare/WAF: present challenge on /login"
+    }
+  ],
+  "config_snapshot": {
+    "window_seconds": 30,
+    "alert_zscore_threshold": 2.0,
+    "min_requests_for_alert": 10,
+    "min_score": 20,
+    "dry_run": true
+  }
+}

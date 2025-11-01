@@ -45,8 +45,7 @@ This makes the AI not just *reactive*, but *advisory and interpretable* — a st
 
 ## 🏗️ Project Structure
 
-
-
+```
 AI-DDoS-Detection/
 ├── src/
 │   ├── **init**.py
@@ -65,6 +64,7 @@ AI-DDoS-Detection/
 │   └── sample_access.log      # Sample log file for demo
 └── README.md
 
+```
 ---
 
 ## ⚙️ Dependencies
@@ -209,4 +209,5 @@ Unlike conventional IDS systems, this model:
 It’s a lightweight yet **forward-looking SOC automation prototype** — showing how **AI can defend, explain, and assist**.
 
 ---
+
 
